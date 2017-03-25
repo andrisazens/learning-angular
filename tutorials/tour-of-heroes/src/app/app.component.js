@@ -22,7 +22,8 @@ var AppComponent = (function () {
         this.getHeroes();
     };
     AppComponent.prototype.getHeroes = function () {
-        this.heroes = this.heroService.getHeroes();
+        var _this = this;
+        this.heroService.getHeroesSlowly().then(function (heroes) { return _this.heroes = heroes; });
     };
     AppComponent = __decorate([
         core_1.Component({

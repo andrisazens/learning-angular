@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
@@ -68,7 +68,7 @@ import { HeroService } from './hero.service';
   providers: [HeroService]
 
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(private heroService: HeroService) {
   }
@@ -85,8 +85,7 @@ export class AppComponent {
     this.getHeroes();
   }
 
-  getHeroes(){
-    this.heroes = this.heroService.getHeroes();
+  getHeroes(): void {
+    this.heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
   }
-
 }
